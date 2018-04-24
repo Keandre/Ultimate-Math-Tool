@@ -46,12 +46,15 @@ def perimeterOfRectangle(length, width):
 
 # ------------------------------Lines and Stuff----------------------
 
+def midpoint(x1,y1,x2,y2):
+    return f'The midpoint is: ({(x1+x2)/2}),({(y1+y2)/2})'
+
 def slope(y2, y1, x2, x1):
     return Fraction(y2 - y1, x2 - x1)
 
 
 def lengthOfLine(x1, y1, x2, y2):
-    return ("√", sqrt(y2 - y1) + sqrt(x2 - x1))
+    return (f'√{(y2 - y1)**2 + (x2 - x1)**2}')
 
 
 def linearEquation(x1, y1, x2, y2):
@@ -69,7 +72,7 @@ def linearEquation(x1, y1, x2, y2):
 def rightBisector(x1, y1, x2, y2):
     midpoint = [(x1 + x2) / 2, (y1 + y2) / 2]
 
-    # Make slope and make it negative reciporcal 
+    # Make slope and make it negative reciporcal
     slope_frac = slope(y2, y1, x2, x1)
     nume = slope_frac.numerator
     deno = slope_frac.denominator
@@ -80,7 +83,7 @@ def rightBisector(x1, y1, x2, y2):
     # Convert to Fraction if it's not a whole number
     b = Fraction(b) if int(b) != b else int(b)
 
-    # Make - (-b) into + b 
+    # Make - (-b) into + b
     if type(b) == Fraction:
         b = f'- {b}' if b >= 0 else f'+ {str(b)[1:]}'
     else:
