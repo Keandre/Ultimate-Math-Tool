@@ -1,9 +1,16 @@
-from math import pi
-from math import sqrt
+from math import pi,radians,sqrt,tan
 from fractions import Fraction
 
 
 # ---------------Area/Perimeters------------------------------
+
+#Regular Polygons
+def perimeterRegularPolygons(numOfSides,sideLength):
+  return numOfSides*sideLength
+
+def areaRegularPolygons(numOfSides,sideLength):
+  apothem = sideLength/(2*tan(radians(180/numOfSides)))
+  return ((apothem*perimeterRegularPolygons(numOfSides,sideLength))/2)
 
 # Circle
 def areaOfCircle(radius):
@@ -13,16 +20,6 @@ def areaOfCircle(radius):
 def perimeterOfCircle(radius):
     return pi * radius * 2
 
-
-# Square
-def areaOfSquare(side):
-    return side ** 2
-
-
-def perimeterOfSquare(side):
-    return side * 4
-
-
 # Triangle
 def areaOfTriangle(base, height):
     return base * height
@@ -30,7 +27,6 @@ def areaOfTriangle(base, height):
 
 def perimeterOfTriangle(a, b, c):
     return a + b + c
-
 
 # Rectangle
 
@@ -41,20 +37,27 @@ def areaOfRectangle(length, width):
 def perimeterOfRectangle(length, width):
     return (length * 2) + (width * 2)
 
+#Trapezoid
+
+def areaOfTrapezoid(a,b,h):
+    return (a+b)/2 * h 
+
+def perimeterOfTrapezoid(a,b,c,d):
+    return a+b+c+d
+
 
 # Do parallelogram, trapezoid
 
 # ------------------------------Lines and Stuff----------------------
-
 def midpoint(x1,y1,x2,y2):
-    return f'The midpoint is: ({(x1+x2)/2}),({(y1+y2)/2})'
+  return ((x1+x2)/2,(y1+y2)/2)
 
 def slope(y2, y1, x2, x1):
     return Fraction(y2 - y1, x2 - x1)
 
-
+#Returns the square root (√) of...
 def lengthOfLine(x1, y1, x2, y2):
-    return (f'√{(y2 - y1)**2 + (x2 - x1)**2}')
+    return (y2 - y1)**2 + (x2 - x1)**2
 
 
 def linearEquation(x1, y1, x2, y2):
@@ -70,7 +73,7 @@ def linearEquation(x1, y1, x2, y2):
 
 
 def rightBisector(x1, y1, x2, y2):
-    midpoint = [(x1 + x2) / 2, (y1 + y2) / 2]
+    midpoint = midpoint(x1,y1,x2,y2)
 
     # Make slope and make it negative reciporcal
     slope_frac = slope(y2, y1, x2, x1)
