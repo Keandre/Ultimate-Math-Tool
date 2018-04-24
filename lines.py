@@ -22,7 +22,7 @@ def perimeterOfCircle(radius):
 
 # Triangle
 def areaOfTriangle(base, height):
-    return base * height
+    return (base * height) / 2
 
 
 def perimeterOfTriangle(a, b, c):
