@@ -1,7 +1,5 @@
-from math import pi,radians,sqrt,tan
+from math import pi, radians, sqrt, tan
 from fractions import Fraction
-
-
 # ---------------Area/Perimeters------------------------------
 
 #Regular Polygons
@@ -40,7 +38,7 @@ def perimeterOfRectangle(length, width):
 #Trapezoid
 
 def areaOfTrapezoid(a,b,h):
-    return (a+b)/2 * h 
+    return (a+b)/2 * h
 
 def perimeterOfTrapezoid(a,b,c,d):
     return a+b+c+d
@@ -53,12 +51,11 @@ def midpoint(x1,y1,x2,y2):
   return ((x1+x2)/2,(y1+y2)/2)
 
 def slope(y2, y1, x2, x1):
-    return Fraction(y2 - y1, x2 - x1)
+    return Fraction((y2 - y1)/ (x2 - x1))
 
 #Returns the square root (√) of...
 def lengthOfLine(x1, y1, x2, y2):
     return (y2 - y1)**2 + (x2 - x1)**2
-
 
 def linearEquation(x1, y1, x2, y2):
     b = y1 - slope(y2, y1, x2, x1) * x1
@@ -67,10 +64,10 @@ def linearEquation(x1, y1, x2, y2):
     b = Fraction(b) if type(b) != int else b
 
     # Change to '+Fraction' if it's a negative number and '-Fraction' if it's a positive one.
-    b = "+ " + str(b)[1:] if str(b)[0] == "-" else "- " + b
+    b = "+ " + str(b)[1:] if str(b)[0] == "-" else "- " + str(b)
 
-    return ("y = " + str(Fraction(y2 - y1, x2 - x1)) + "x " + b)
-
+    #return ("y = " + str(Fraction((y2 - y1)/(x2 - x1)) + "x " + b))
+    return (f"y = {slope(y2,y1,x2,x1)} x {b}")
 
 def rightBisector(x1, y1, x2, y2):
     midpoint = midpoint(x1,y1,x2,y2)
@@ -88,11 +85,10 @@ def rightBisector(x1, y1, x2, y2):
 
     # Make - (-b) into + b
     if type(b) == Fraction:
-        b = f'- {b}' if b >= 0 else f'+ {str(b)[1:]}'
+        b = f'- {b}' if b > 0 else f'+ {str(b)[1:]}'
     else:
         b = f'+ {str(b)[1:]}' if b < 0 else f'+ {b}'
 
     return (f'y =  {negreci_slope}x {b}')
 
 # ------------------------------------------------------------------------------
-
