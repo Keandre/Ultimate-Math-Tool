@@ -2,7 +2,7 @@ import geometry
 
 print("Welcome to the Ultimate Math Tool. What would you like to do?\n")
 while True:
-    choice = input("1 - Area\n2 - Perimeter\n3 - Lines and Stuff\n")
+    choice = input("1 - Area\n2 - Perimeter\n3 - Lines and Stuff\n4 - Exit")
     if choice == "1":
         while True:
             choice = input("What would you like to calculate the area of?\n 1 - Regular Polygons\n 2 - Triangle\n 3 - Rectangle\n 4 - Trapezoid\n")
@@ -53,12 +53,54 @@ while True:
                 b = float(input("Enter the b of the trapezoid."))
                 c = float(input("Enter in the c of the trapezoid."))
                 d = float(input("Enter in the d of the trapezoid."))
-                print(f'The perimeter of the trapezoid is: {geometry.perimeterOfTrapezoid(a,b,c,d)}\n')
+                print(f"The perimeter of the trapezoid is: {geometry.perimeterOfTrapezoid(a,b,c,d)}\n")
             else:
                 print("That's not a valid option.")
             choice = input("Would you still like to calculate perimeter?")
             if choice.lower() != "yes":
                 break
+    if choice == "3":
+        while True:
+            choice = input("What do you wanna do?\n1 - Midpoint\n2 - Slope\n3 - Length of a Line\n4 - Linear Equation\n5 - Right Bisector Equation\n")
+            if choice == "1":
+                x1 = float(input("Enter x₁."))
+                y1 = float(input("Enter y₁."))
+                x2 = float(input("Enter x₂."))
+                y2 = float(input("Enter in y₂."))
+                print(f"The midpoint is: {geometry.midpoint(x1,y1,x2,y2)}\n")
+            if choice == "2":
+                x1 = float(input("Enter x₁."))
+                y1 = float(input("Enter y₁."))
+                x2 = float(input("Enter x₂."))
+                y2 = float(input("Enter in y₂."))
+                print(f"The slope is: {geometry.slope(x1,y1,x2,y2)}\n")
+            if choice == "3":
+                x1 = float(input("Enter x₁."))
+                y1 = float(input("Enter y₁."))
+                x2 = float(input("Enter x₂."))
+                y2 = float(input("Enter in y₂."))
+                print(f"The length is: √{geometry.lengthOfLine(x1,y1,x2,y2)}\n")
+            if choice == "4":
+                x1 = float(input("Enter x₁."))
+                y1 = float(input("Enter y₁."))
+                x2 = float(input("Enter x₂."))
+                y2 = float(input("Enter in y₂."))
+                print(f"The equation is: {geometry.slope(x1,y1,x2,y2)}\n")
+            if choice == "5":
+                x1 = float(input("Enter x₁."))
+                y1 = float(input("Enter y₁."))
+                x2 = float(input("Enter x₂."))
+                y2 = float(input("Enter in y₂."))
+                print(f"The right bisector equation is: {geometry.rightBisector(x1,y1,x2,y2)}\n")
+            else:
+                print("That's not an option.\n")
+            choice = input("Would you like to do line stuff again?\n")
+            if choice.lower() != "yes":
+                break
+    if choice == "5":
+        break 
+
+
 
 
 
