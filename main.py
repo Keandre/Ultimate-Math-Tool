@@ -85,7 +85,7 @@ while True:
                 y1 = float(input("Enter y₁."))
                 x2 = float(input("Enter x₂."))
                 y2 = float(input("Enter in y₂."))
-                print(f"The equation is: {geometry.slope(x1,y1,x2,y2)}\n")
+                print(f"The equation is: {geometry.linearEquation(x1,y1,x2,y2)}\n")
             if choice == "5":
                 x1 = float(input("Enter x₁."))
                 y1 = float(input("Enter y₁."))
@@ -98,14 +98,4 @@ while True:
             if choice.lower() != "yes":
                 break
     if choice == "5":
-        break 
-
-
-
-
-
-
-
-
-
-
+        break
