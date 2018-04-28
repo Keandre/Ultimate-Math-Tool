@@ -1,4 +1,5 @@
-import geometry
+import Geometry
+import Line
 
 print("Welcome to the Ultimate Math Tool. What would you like to do?\n")
 while True:
@@ -10,23 +11,23 @@ while True:
             if choice == "1":
                 numOfSides = float(input("Enter in the amount of sides."))
                 sideLength = float(input("Enter in the side length."))
-                print(f'The area is: {geometry.areaRegularPolygons(numOfSides,sideLength)}\n')
+                print(f'The area is: {Geometry.areaRegularPolygons(numOfSides,sideLength)}\n')
             #Triangle
             if choice == "2":
                 base = float(input("Enter in the base length of the triangle."))
                 height = float(input("Enter in the height of the triangle."))
-                print(f'The area of the triangle is: {geometry.areaOfTriangle(base,height)}\n')
+                print(f'The area of the triangle is: {Geometry.areaOfTriangle(base,height)}\n')
             #Rectangle
             if choice == "3":
                 length = float(input("Please enter the length of the rectangle."))
                 width = float(input("Please enter the width."))
-                print(f'The area of the rectangle is: {geometry.areaOfRectangle(length,width)}\n')
+                print(f'The area of the rectangle is: {Geometry.areaOfRectangle(length,width)}\n')
             #Trapezoid
             if choice == "4":
                 a = float(input("Please enter the a of the trapezoid."))
                 b = float(input("Please enter the b of the trapezoid."))
                 h = float(input("Please enter the h of the trapezoid."))
-                print(f'The area of the trapezoid is: {geometry.areaOfTrapezoid(a,b,h)}\n')
+                print(f'The area of the trapezoid is: {Geometry.areaOfTrapezoid(a,b,h)}\n')
             else:
                 print("That is not a valid option.")
             choice = input("Would you still like to calculate area?\n")
@@ -38,22 +39,22 @@ while True:
             if choice == "1":
                 numOfSides = float(input("Enter in the amount of sides of the regular polygon."))
                 sideLength = float(input("Enter in the length of each side."))
-                print(f'The perimeter of the regular polygon is: {geometry.perimeterRegularPolygons(numOfSides,sideLength)}\n')
+                print(f'The perimeter of the regular polygon is: {Geometry.perimeterRegularPolygons(numOfSides,sideLength)}\n')
             if choice == "2":
                 a = float(input("Enter in the a of the triangle."))
                 b = float(input("Enter in the b of the triangle."))
                 c = float(input("Enter in the c of the triangle."))
-                print(f'The perimeter of the triangle is: {geometry.perimeterOfTriangle(a,b,c)}\n')
+                print(f'The perimeter of the triangle is: {Geometry.perimeterOfTriangle(a,b,c)}\n')
             if choice == "3":
                 length = float(input("Enter the length of the rectangle."))
                 width = float(input("Enter in the width of the rectangle."))
-                print(f'The perimeter of the rectangle is: {geometry.perimeterOfRectangle(length,width)}\n')
+                print(f'The perimeter of the rectangle is: {Geometry.perimeterOfRectangle(length,width)}\n')
             if choice == "4":
                 a = float(input("Enter the a of the trapezoid."))
                 b = float(input("Enter the b of the trapezoid."))
                 c = float(input("Enter in the c of the trapezoid."))
                 d = float(input("Enter in the d of the trapezoid."))
-                print(f"The perimeter of the trapezoid is: {geometry.perimeterOfTrapezoid(a,b,c,d)}\n")
+                print(f"The perimeter of the trapezoid is: {Geometry.perimeterOfTrapezoid(a,b,c,d)}\n")
             else:
                 print("That's not a valid option.")
             choice = input("Would you still like to calculate perimeter?")
@@ -61,41 +62,18 @@ while True:
                 break
     if choice == "3":
         while True:
-            choice = input("What do you wanna do?\n1 - Midpoint\n2 - Slope\n3 - Length of a Line\n4 - Linear Equation\n5 - Right Bisector Equation\n")
-            if choice == "1":
-                x1 = float(input("Enter x₁."))
-                y1 = float(input("Enter y₁."))
-                x2 = float(input("Enter x₂."))
-                y2 = float(input("Enter in y₂."))
-                print(f"The midpoint is: {geometry.midpoint(x1,y1,x2,y2)}\n")
-            if choice == "2":
-                x1 = float(input("Enter x₁."))
-                y1 = float(input("Enter y₁."))
-                x2 = float(input("Enter x₂."))
-                y2 = float(input("Enter in y₂."))
-                print(f"The slope is: {geometry.slope(x1,y1,x2,y2)}\n")
-            if choice == "3":
-                x1 = float(input("Enter x₁."))
-                y1 = float(input("Enter y₁."))
-                x2 = float(input("Enter x₂."))
-                y2 = float(input("Enter in y₂."))
-                print(f"The length is: √{geometry.lengthOfLine(x1,y1,x2,y2)}\n")
-            if choice == "4":
-                x1 = float(input("Enter x₁."))
-                y1 = float(input("Enter y₁."))
-                x2 = float(input("Enter x₂."))
-                y2 = float(input("Enter in y₂."))
-                print(f"The equation is: {geometry.linearEquation(x1,y1,x2,y2)}\n")
-            if choice == "5":
-                x1 = float(input("Enter x₁."))
-                y1 = float(input("Enter y₁."))
-                x2 = float(input("Enter x₂."))
-                y2 = float(input("Enter in y₂."))
-                print(f"The right bisector equation is: {geometry.rightBisector(x1,y1,x2,y2)}\n")
-            else:
-                print("That's not an option.\n")
-            choice = input("Would you like to do line stuff again?\n")
-            if choice.lower() != "yes":
+           x1 = float(input("Enter the x coordinate of the first point."))
+           y1 = float(input("Enter the y coordinate of the first point."))
+           x2 = float(input("Enter the x coordinate of the second point."))
+           y2 = float(input("Enter the y coordinate of the second point."))
+           line = Line(point1=(x1,y1),point2=(x2,y2))
+           print("The coordinates you entered is: ({x1},{y1}) and ({x2},{y2})\n")
+           choice = input("What do you want to know?\n1 - Midpoint\n2 - Slope\n3 - Length\n4 - Angle\n5 - Equation\n6 - Right Bisector Equation")
+           if choice == "1":
+               print("")
+               choice = input("Would you like to do line stuff again?\n")
+           if choice.lower() != "yes":
                 break
-    if choice == "5":
+    if choice == "4":
+        print("Thanks for using the program. Goodbye.")
         break
