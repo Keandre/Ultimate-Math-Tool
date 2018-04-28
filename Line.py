@@ -1,4 +1,4 @@
-from math import tan,pi
+from math import atan2,pi
 from fractions import Fraction
 
 class Point:
@@ -18,42 +18,58 @@ class Line:
 
     @property
     def midpoint(self):
-        return ((self.point1[0]+self.point2[0])/2,(self.point1[1]+self.point2[1])/2)
+        point1_x, point1_y = self.point1
+        point2_x, point2_y = self.point2
+        midpoint_x = (point1_x + point2_x) / 2
+        midpoint_y = (point1_y + point2_y) / 2
+        return midpoint_x, midpoint_y
 
     @property
     def slope(self):
+        point1_x, point1_y = self.point1
+        point2_x, point2_y = self.point2
         try:
-            return Fraction((self.point2[1]-self.point1[1]) / (self.point2[0]-self.point1[0]))
+            return Fraction((point2_y-point1_y) / (point2_x-point1_x))
         except ZeroDivisionError:
             return 0
 
     @property
     def length(self):
-        return ((self.point2[0]-self.point1[0])**2+(self.point2[1]-self.point1[1])**2)
+        point1_x, point1_y = self.point1
+        point2_x, point2_y = self.point2
+        return ((point2_x-point1_x)**2+(point2_y-point1_y)**2)
 
     @property
     def equation(self):
-        b = self.point1[1] - self.slope() * self.point1[0]
+        point1_x, point1_y = self.point1
+        point2_x, point2_y = self.point2
+        b = point1_y - self.slope * point1_x
 
         # Convert to Fraction if it's not a whole number
-        b = Fraction(b) if type(b) != int else b
+        if b.is_integer():
+            b = int(b)
+        else:
+            b = Fraction(b)
 
         # Change to '+Fraction' if it's a negative number and '-Fraction' if it's a positive one.
         b = "- " + str(b)[1:] if str(b)[0] == "-" else "+ " + str(b)
 
-        return (f"y = {self.slope()} x {b}")
+        return (f"y = {self.slope} x {b}")
 
     @property
     def rightBisector(self):
             # Make slope and make it negative reciporcal
-            nume = self.slope().numerator
-            deno = self.slope().denominator
+            nume = self.slope.numerator
+            deno = self.slope.denominator
             negreci_slope = Fraction(-deno, nume)
 
-            b = self.midpoint()[1] - negreci_slope * self.midpoint()[0]
+            b = self.midpoint[1] - negreci_slope * self.midpoint[0]
 
             # Convert to Fraction if it's not a whole number
-            b = Fraction(b) if int(b) != b else int(b)
+            if b.is_integer():
+                b = int(b)
+            else:
+                b = Fraction(b)
 
             # Make - (-b) into + b
             if type(b) == Fraction:
@@ -65,16 +81,25 @@ class Line:
 
     @property
     def angle_radians(self):
-        return 2*tan(self.point2[1]-self.point1[1],self.point2[0],self.point1[0])
+        point1_x, point1_y = self.point1
+        point2_x, point2_y = self.point2
+        return atan2(point2_y-point1_y,point2_x-point1_x)
 
     @property
     def angle_degrees(self):
-        return 2*tan(self.point2[1]-self.point1[1],self.point2[0],self.point1[0])*180/pi
+        point1_x, point1_y = self.point1
+        point2_x, point2_y = self.point2
+        return atan2(point2_y-point1_y,point2_x-point1_x)*180/pi
 
     def onLine(self, point=(0, 0)):
-        b = self.point1[1] - self.slope() * self.point1[0]
+        point1_x, point1_y = self.point1
+        point2_x, point2_y = self.point2
+        b = point1_y - self.slope * point1_x
 
         # Convert to Fraction if it's not a whole number
-        b = Fraction(b) if type(b) != int else b
+        if b.is_integer():
+            b = int(b)
+        else:
+            b = Fraction(b)
 
-        return (self.point[0] * self.slope() + b == self.point[1])
+        return (point[0] * self.slope + b == point[1])
