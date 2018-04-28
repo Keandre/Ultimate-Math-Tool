@@ -1,5 +1,5 @@
 import Geometry
-import Line
+from Line import Line
 
 print("Welcome to the Ultimate Math Tool. What would you like to do?\n")
 while True:
@@ -67,11 +67,22 @@ while True:
            x2 = float(input("Enter the x coordinate of the second point."))
            y2 = float(input("Enter the y coordinate of the second point."))
            line = Line(point1=(x1,y1),point2=(x2,y2))
-           print("The coordinates you entered is: ({x1},{y1}) and ({x2},{y2})\n")
+           print("The coordinates you entered is: ({},{}) and ({},{})\n".format(x1,y1,x2,y2))
            choice = input("What do you want to know?\n1 - Midpoint\n2 - Slope\n3 - Length\n4 - Angle\n5 - Equation\n6 - Right Bisector Equation")
            if choice == "1":
-               print("")
-               choice = input("Would you like to do line stuff again?\n")
+               print("The midpoint is: {}".format(line.midpoint))
+           if choice == "2":
+               print("The slope is: {}".format(line.slope))
+           if choice == "3":
+               print("The length of the line is: √{}".format(line.length))
+           if choice == "4":
+               print("{}° & {}c.".format(line.angle_degrees,line.angle_radians))
+           if choice == "5":
+               print("The equation is: {}".format(line.equation))
+           if choice == "6":
+               print("The Right Bisector equation is: {}".format(line.rightBisector))
+
+           choice = input("Would you like to do line stuff again?\n")
            if choice.lower() != "yes":
                 break
     if choice == "4":
