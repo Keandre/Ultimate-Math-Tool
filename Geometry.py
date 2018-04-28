@@ -1,4 +1,5 @@
 from math import pi, radians, sqrt, tan
+import decimal
 from fractions import Fraction
 # ---------------Area/Perimeters------------------------------
 
@@ -7,7 +8,7 @@ def perimeterRegularPolygons(numOfSides,sideLength):
   return numOfSides*sideLength
 
 def areaRegularPolygons(numOfSides,sideLength):
-  apothem = sideLength/(2*tan(radians(180/numOfSides)))
+  apothem = sideLength/decimal((2*tan(radians(180/numOfSides))))
   return ((apothem*perimeterRegularPolygons(numOfSides,sideLength))/2)
 
 # Circle
@@ -51,7 +52,10 @@ def midpoint(x1,y1,x2,y2):
   return ((x1+x2)/2,(y1+y2)/2)
 
 def slope(y2, y1, x2, x1):
-    return Fraction((y2 - y1)/ (x2 - x1))
+    try:
+        return Fraction((y2 - y1)/ (x2 - x1))
+    except ZeroDivisionError:
+        return 0
 
 #Returns the square root (√) of...
 def lengthOfLine(x1, y1, x2, y2):
@@ -64,9 +68,8 @@ def linearEquation(x1, y1, x2, y2):
     b = Fraction(b) if type(b) != int else b
 
     # Change to '+Fraction' if it's a negative number and '-Fraction' if it's a positive one.
-    b = "+ " + str(b)[1:] if str(b)[0] == "-" else "- " + str(b)
+    b = "- " + str(b)[1:] if str(b)[0] == "-" else "+ " + str(b)
 
-    #return ("y = " + str(Fraction((y2 - y1)/(x2 - x1)) + "x " + b))
     return (f"y = {slope(y2,y1,x2,x1)} x {b}")
 
 def rightBisector(x1, y1, x2, y2):
