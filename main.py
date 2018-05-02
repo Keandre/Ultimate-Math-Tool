@@ -1,4 +1,12 @@
+"""
+The Ultimate Math Tool by FanFreak247 & DiracDelta
+Written in Python 3.6.5
+Copyright © FanFreak247 2018.
+This code is not to be used, redistributed or copied without the author's permission.
+"""
+
 import Geometry
+import Algebra
 from Line import Line
 
 print("Welcome to the Ultimate Math Tool. What would you like to do?\n")
