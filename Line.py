@@ -1,3 +1,10 @@
+"""
+The Ultimate Math Tool by FanFreak247 & DiracDelta
+Written in Python 3.6.5
+Copyright © FanFreak247 2018.
+This code is not to be used, redistributed or copied without the author's permission.
+"""
+
 from math import atan2,pi
 from fractions import Fraction
 
@@ -5,7 +12,6 @@ class Point:
     x = 0
     y = 0
     def __init__(self,x,y):
-        # find the equation
         self.y =  y
         self.x =  x
 class Line:
