@@ -6,6 +6,25 @@ This code is not to be used, redistributed or copied without the author's permis
 """
 from numpy import linalg
 from numpy import array
+from math import sqrt
 
+class NoRootsError(Exception):
+    pass
+class NoRationalNumbersError(Exception):
+    pass
+class NotQuadraticError(Exception):
+    pass
+
+def returnX(a,b,c):
+  if a==0:
+    raise NotQuadraticError
+  if b**2-4*a*c < 0:
+    return NoRootsError
+  try:
+    first_solution = (-b + sqrt(b**2-4*a*c))/2*a
+    second_solution = (-b - sqrt(b**2-4*a*c))/2*a
+    return (first_solution,second_solution)
+  except ValueError:
+    raise NoRationalNumbersError
 
 #Currently in development.
