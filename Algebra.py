@@ -19,7 +19,7 @@ def returnX(a,b,c):
   if a==0:
     raise NotQuadraticError
   if b**2-4*a*c < 0:
-    return NoRootsError
+    raise NoRootsError
   try:
     first_solution = (-b + sqrt(b**2-4*a*c))/2*a
     second_solution = (-b - sqrt(b**2-4*a*c))/2*a
